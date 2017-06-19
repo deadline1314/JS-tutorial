@@ -1,0 +1,15 @@
+<script type="text/javascript">
+	if(window.Worker) {
+		//all the worker code goes in the seperate file
+		var myWorker = new Worker("worker.js");
+		
+		var message = {addThis: {num1: 1, num2: 1} };
+
+		myWorker.postMessage(message);
+
+		myWorker.onmessage = function(e) {
+			console.dir(e.data.result);
+		};
+	}
+
+</script>
